@@ -10,9 +10,9 @@ import { getCachedImage } from "@/utils/cachedImage";
 import Image from "next/image";
 
 const ImageThumb = ({ token, index }: any) => {
-  const cachedImage = getCachedImage(token?.media);
+  const cachedImage = getCachedImage(token?.media) as string;
 
-  return (
+  return !!token?.media ? (
     <Link
       key={`${token?.metadata_id}-${index}`}
       href={`${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}`}
@@ -20,10 +20,10 @@ const ImageThumb = ({ token, index }: any) => {
       rel="noopener noreferrer"
       passHref
     >
-      <div className="w-80 h-80 relative">
+      <div className="w-72 h-72 xl:w-80 xl:h-80 relative">
         <div className="absolute inset-0 flex items-center justify-center flex items-center justify-center">
           <Image
-            src={token?.media}
+            src={cachedImage}
             alt={`Token ${index}`}
             className="object-cover h-full w-full"
             width="320"
@@ -31,7 +31,8 @@ const ImageThumb = ({ token, index }: any) => {
             quality={90}
             priority={index < 5}
             placeholder="blur"
-            blurDataURL={token?.media}
+            blurDataURL={cachedImage}
+            unoptimized
           />
         </div>
         <button
@@ -39,7 +40,7 @@ const ImageThumb = ({ token, index }: any) => {
           onClick={(e) => {
             e.preventDefault();
             window.open(
-              `https://twitter.com/intent/tweet?url=${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=`,
+              `https://twitter.com/intent/tweet?url=%0aCheck%20out%20mine%3A%20${constants.mintbaseBaseUrl}/meta/${token?.metadata_id}%2F&via=mintbase&text=${constants.twitterText}`,
               "_blank"
             );
           }}
@@ -48,7 +49,7 @@ const ImageThumb = ({ token, index }: any) => {
         </button>
       </div>
     </Link>
-  );
+  ) : null;
 };
 
 export const HomePage = () => {
@@ -94,12 +95,11 @@ export const HomePage = () => {
   const firstTokenisBlocked =
     newToken?.metadata_id && blockedNfts?.includes(newToken?.metadata_id);
 
-    // return null
+  // return null
 
   return (
     <>
-    
-      <main className="container mx-auto flex flex-col items-center justify-center space-y-4">
+      <main className="px-4 lg:px-12 mx-auto flex flex-col items-center justify-center space-y-4">
         <DynamicGrid mdCols={2} nColsXl={4} nColsXXl={6}>
           {!newToken?.media ? (
             <div
@@ -139,3 +139,4 @@ export const HomePage = () => {
     </>
   );
 };
+

@@ -34,18 +34,13 @@ const Header = () => {
     switch (pathname) {
       case "/":
         return (
-          <div className="flex w-full justify-between px-4 lg:px-12 items-center">
+          <div className="flex w-full justify-between px-4 lg:px-12  items-center">
             <div>
-              <button className="font-bold text-xl" onClick={() => push("/")}>
-                {/* {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"} */}
-                <InlineSVG
-                  src="/images/mintbase_red.svg"
-                  className="hidden md:block"
-                />
-                <InlineSVG
-                  src="/images/mintbase_small.svg"
-                  className="w-[32px] h-auto md:hidden"
-                />
+              <button
+                className="font-bold text-xl"
+                onClick={() => push("/")}
+              >
+                {process.env.NEXT_PUBLIC_APP_TITLE || "Minsta"}
               </button>
             </div>
             <div className="flex gap-4">
@@ -68,7 +63,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed left-0 top-0 flex w-full justify-center h-16 bg-primary text-headerText">
+      <header className="fixed left-0 top-0 flex w-full justify-center h-12 bg-primary text-headerText">
         {renderHeaderButtons()}
       </header>
       {isClosed ? (

@@ -28,5 +28,4 @@ export const constants = {
   mintbaseWalletUrl,
   twitterText,
   isClosed: process.env.NEXT_PUBLIC_MINTING_CLOSED === "true" || false,
-  showRewards: process.env.NEXT_PUBLIC_SHOW_REWARDS === "true" || false,
 };

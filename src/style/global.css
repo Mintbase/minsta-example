@@ -1,14 +1,14 @@
 :root {
-          --primary: #1A1B20;
+          --primary: #101223;
           --secondary: #000;
-          --mainBg: #1A1B20;
-          --gradOne: #CFFC71;
-          --gradTwo: #CFFC71;
+          --mainBg: #101223;
+          --gradOne: #FF2424;
+          --gradTwo: #FF2424;
           --cardOne: #33343A;
-          --cardTwo: #CFFC71;
+          --cardTwo: #FF2424;
           --linkColor: #C5D0FF;
-          --icon: #CFFC71;
-          --camera: #1A1B20;
+          --icon: #FF2424;
+          --camera: #101223;
           --modalText: #FFFFFF;
           --leaderboardText: #FFFFFF;
           --headerText: #FFFFFF;
